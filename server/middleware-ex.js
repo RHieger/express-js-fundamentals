@@ -8,6 +8,36 @@ var app = express();
 
 var port = 8000;
 
+// SPECIFY EXPFRESS METHODS NEEDED:
+
+app.use( body-parser() );
+
+app.use( cookieParser() );
+
+// Set Default Route:
+
+app.get('/',  log, hello);
+
+// MIDDLEWARE METHODS:
+
+function log(req, res, next)  {
+
+    console.log(new Date(), req.method, req.url);
+
+    next();
+
+}   // end log()
+
+function hello(req, res, next)  {
+
+    res.write('Hello\n' + 'World');
+
+    res.end();
+
+    next();
+
+}   // end hello()
+
 // Start server:
 
 app.listen( port, (err, res) =>  {
